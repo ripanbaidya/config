@@ -1,0 +1,14 @@
+server:
+  port: 8070 # default 8761 to your specified port
+
+eureka:
+  instance:
+    hostname: localhost # The hostname of the Eureka server instance
+  client:
+    # Since this is the server, we tell it not to register with itself
+    register-with-eureka: false
+    # The server doesn't need to fetch the registry from peers in a standalone setup
+    fetch-registry: false
+    service-url:
+      # The endpoint where clients will send their heartbeats
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
